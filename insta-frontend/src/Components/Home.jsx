@@ -3,7 +3,7 @@ import React from 'react';
 function Home() {
     return (
         <div>
-            Welcome to instaclone
+            <h2> Welcome To Instaclone</h2>
         </div>
     )
     

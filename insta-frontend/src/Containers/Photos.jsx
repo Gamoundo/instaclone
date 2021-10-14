@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Posts() {
+function Photos() {
     return(
         <div>
-            <h1> The Posts</h1>
+            <h1> The Photos</h1>
         </div>
     )
     
 }
 
-export default Posts;
+export default Photos;
