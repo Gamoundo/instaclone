@@ -3,7 +3,7 @@ import React from 'react'
 function Upload() {
     return(
         <div>
-            Share a pic
+            <p>Share a pic</p>
         </div>
     )
 }

@@ -1,5 +1,18 @@
+body {
+  background-color: paleturquoise;
+}
+
+h1 {
+  color: palevioletred;
+}
+
+p {
+  color: purple;
+}
 .App {
-  text-align: center;
+  text-align: left;
+  
+
 }
 
 .App-logo {
@@ -35,4 +48,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav {
+  background-color: #282c34;
+  height: 2.5rem;
+  text-align: left;
+  font-size: x-large;
 }
