@@ -4,7 +4,7 @@ function Upload() {
 
     const [formData, setformData] = useState(
         {
-            file: "",
+            photo: "",
             caption: ""
         }
     )
@@ -21,24 +21,40 @@ function Upload() {
         }
 
 
-     const   handleFileChange = (e) => {
-                setformData((prevState) => {
-                    return{
-                        ...prevState,
-                        [e.target.name]: e.target.files[0]
-                    }
-                }
+const   handleFileChange = (e) => {
+    setformData((prevState) => {            
+         return{
+            ...prevState,            
+            [e.target.name]: e.target.files[0]            
+         }                      
+    }            
 
-                )
-        }
+    )            
+}            
+
+const handleSubmit =(e) => {
+    e.preventDefault();
+    const {photo, caption} = formData
+    let postInfo = new FormData()
+    postInfo.append("photo", photo)
+    postInfo.append("caption", caption)
+    fetch("http://localhost:3001/posts", {
+        method: "POST",
+        body: postInfo
+    })
+    .then(resp => resp.json())
+    .then(json => console.log(json))
+    .catch(error => console.error(error))
+}
+
 
     return(
         <div>
             <p>Share a pic</p>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <input onChange={handleFileChange} type='file' name='file'/>
+                    <input onChange={handleFileChange} type='file' name='photo'/>
                     
                 </div>
                 <div>
