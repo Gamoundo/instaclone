@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 
 
-function Navbar() {
+function Navbar(props) {
 
     const link = {
         width: '50px',
@@ -24,8 +24,8 @@ function Navbar() {
     return(
         <div className='nav' >
             <NavLink style={link} to='/'>Home</NavLink>
-            <NavLink style={link} to='/upload'> Upload</NavLink>
-            <NavLink style={link} to='/photos'> Photos</NavLink>
+            {props.sesh.user === {} ? <NavLink style={link} to='/upload'> Upload</NavLink> : <button> Login</button>}
+            {props.sesh.user === {} ? <NavLink style={link} to='/photos'> Photos</NavLink> : <button> Signup</button>}
         </div>
     )
     
