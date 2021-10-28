@@ -5,6 +5,8 @@ import Upload from './Components/UploadPosts';
 import Photos from './Containers/Photos';
 import './App.css';
 import { useState } from 'react';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/upload" component={Upload}></Route>
         <Route exact path="/photos" component={Photos}></Route>
+        <Route exact path="/login" component={Login}></Route>
+        <Route exact path="/signup" component={Signup}></Route>
       </Switch>
     </div>
     </Router>

@@ -22,13 +22,19 @@ function Signup() {
 
 const handleSubmit =(e) => {
     e.preventDefault()
+    const params = {
+        user: {
+            ...formData
+        }
+    }
+
     fetch("http://localhost:3001/signup", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(params)
     })
     .then(resp => resp.json())
     .then(json => console.log(json))
@@ -50,7 +56,7 @@ const handleSubmit =(e) => {
                     <input onChange={handleChange} value={formData.password}type='password' name='password'/>
                     
                 </div>
-                <input type="submit" value="Login"  />
+                <input type="submit" value="Register"  />
             </form>
         </div>
     )

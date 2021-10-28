@@ -24,8 +24,8 @@ function Navbar(props) {
     return(
         <div className='nav' >
             <NavLink style={link} to='/'>Home</NavLink>
-            {props.sesh.user === {} ? <NavLink style={link} to='/upload'> Upload</NavLink> : <button> Login</button>}
-            {props.sesh.user === {} ? <NavLink style={link} to='/photos'> Photos</NavLink> : <button> Signup</button>}
+            {props.sesh.user === {} ? <NavLink style={link} to='/upload'> Upload</NavLink> : <NavLink style={link} to='/login'> Login</NavLink>}
+            {props.sesh.user === {} ? <NavLink style={link} to='/photos'> Photos</NavLink> : <NavLink style={link} to='/signup'> Register</NavLink>}
         </div>
     )
     
