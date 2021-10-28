@@ -15,6 +15,8 @@ function App() {
     logged: false,
     requesting: true
   })
+
+  console.log(sesh)
   return (
     <Router>
         <div  className='App'>
@@ -25,7 +27,7 @@ function App() {
         <Route exact path="/upload" component={Upload}></Route>
         <Route exact path="/photos" component={Photos}></Route>
         <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/signup" component={Signup}></Route>
+        <Route exact path="/signup"><Signup setsesh={setsesh} /></Route>
       </Switch>
     </div>
     </Router>

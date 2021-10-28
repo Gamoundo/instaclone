@@ -13,10 +13,14 @@ console.log(post)
 const displayPosts = (arr) => {
     return(arr.map((ele) => {
         return(
-            <div>
+            <div className="post">
                 <img  src={ele.photo} alt={ele.caption} width="200px" height="200px"/>
                 <p>{ele.caption}</p>
-                <p>Likes {ele.likes}</p>
+                <div className="srow">
+                    <p>Likes {ele.likes}</p>
+                    <button> Like!</button>
+                </div>
+                
             </div>
         )
     }
@@ -27,8 +31,12 @@ const displayPosts = (arr) => {
     return(
         <div>
             <h1> The Photos</h1>
-            {post.length >=1 && displayPosts(post)}
+            <div className="row">
+                
+                {post.length >=1 && displayPosts(post)}
+            </div>
         </div>
+        
     )
     
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
-function Signup() {
+function Signup({setsesh}) {
 
-
+    const history = useHistory()
     const [formData, setformData] = useState(
         {
             name: "",
@@ -22,6 +23,12 @@ function Signup() {
 
 const handleSubmit =(e) => {
     e.preventDefault()
+    setsesh(prev => {
+        return{
+            ...prev,
+            requesting: true
+        }
+    })
     const params = {
         user: {
             ...formData
@@ -37,7 +44,16 @@ const handleSubmit =(e) => {
             body: JSON.stringify(params)
     })
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(userInfo => {
+        setsesh(prev => {
+            return{
+                user: {...userInfo},
+                loggedin: true,
+                requesting: false
+            }
+        })
+        history.push("/")
+    })
 
 }
 
