@@ -45,14 +45,21 @@ const handleSubmit =(e) => {
     })
     .then(resp => resp.json())
     .then(userInfo => {
-        setsesh(prev => {
-            return{
-                user: {...userInfo},
-                loggedin: true,
-                requesting: false
-            }
-        })
-        history.push("/")
+        if (!userInfo.error) {
+            setsesh(prev => {
+                return{
+                    user: {...userInfo},
+                    loggedin: true,
+                    requesting: false
+                }
+            })
+            window.localStorage.setItem("Instaclone", JSON.stringify(userInfo))
+            history.push("/") 
+        }
+        else {
+            alert("Wrong username or password")
+            history.push('/signup')
+        }
     })
 
 }

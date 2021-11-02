@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from './Login';
 
-function Home() {
+
+function Home(props) {
     return (
         <div>
             <h1> Welcome To Instaclone</h1>
-            <Login />
+            {props.sesh.loggedin === true ? <p>Your pics</p>: <p> Sign in or Register to picture bliss</p>}
         </div>
     )
     

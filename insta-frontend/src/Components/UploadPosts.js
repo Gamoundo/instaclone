@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 function Upload() {
-
+const history= useHistory()
     const [formData, setformData] = useState(
         {
             photo: "",
@@ -45,6 +46,7 @@ const handleSubmit =(e) => {
     .then(resp => resp.json())
     .then(json => console.log(json))
     .catch(error => console.error(error))
+    history.push("/photos")
 }
 
 

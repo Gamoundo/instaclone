@@ -7,23 +7,34 @@ import './App.css';
 import { useState } from 'react';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
-
+const history = useHistory()
   const [sesh, setsesh] = useState({
     user: {},
-    logged: false,
+    loggedin: false,
     requesting: true
   })
+
+  const logout = () => {
+    setsesh({
+      user: {},
+    loggedin: false,
+    requesting: true
+    })
+    
+  }
 
   console.log(sesh)
   return (
     <Router>
         <div  className='App'>
       <h1> Instaclone</h1>
+      {sesh.loggedin === true && <button onClick={logout}>Logout</button>}
       <Navbar sesh={sesh}/>
       <Switch>
-        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/"><Home sesh={sesh}/></Route>
         <Route exact path="/upload" component={Upload}></Route>
         <Route exact path="/photos" component={Photos}></Route>
         <Route exact path="/login" component={Login}></Route>
