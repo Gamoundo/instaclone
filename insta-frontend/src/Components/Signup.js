@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 function Signup({setsesh}) {
-
     const history = useHistory()
+    
     const [formData, setformData] = useState(
         {
             name: "",
@@ -57,7 +57,7 @@ const handleSubmit =(e) => {
             history.push("/") 
         }
         else {
-            alert("Wrong username or password")
+            alert("That name is taken")
             history.push('/signup')
         }
     })

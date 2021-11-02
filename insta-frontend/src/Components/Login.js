@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
-function Login() {
-
+function Login({setsesh}) {
+    const history = useHistory()
 
     const [formData, setformData] = useState(
         {
@@ -22,9 +23,44 @@ function Login() {
 
 const handleSubmit =(e) => {
     e.preventDefault()
-    fetch("http://localhost:3001/login")
+    setsesh(prev => {
+        return{
+            ...prev,
+            requesting: true
+        }
+    })
+    const params = {
+        user: {
+            ...formData
+        }
+    }
+    fetch("http://localhost:3001/login",{
+        method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(params)
+    }
+    )
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(userInfo => {
+        if (!userInfo.error) {
+            setsesh(prev => {
+                return{
+                    user: {...userInfo},
+                    loggedin: true,
+                    requesting: false
+                }
+            })
+            window.localStorage.setItem("Instaclone", JSON.stringify(userInfo))
+            history.push("/") 
+        }
+        else {
+            alert("Wrong username or password")
+            history.push('/login')
+        }
+    })
 
 }
 

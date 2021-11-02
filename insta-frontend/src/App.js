@@ -7,10 +7,10 @@ import './App.css';
 import { useState } from 'react';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 function App() {
-const history = useHistory()
+
   const [sesh, setsesh] = useState({
     user: {},
     loggedin: false,
@@ -37,7 +37,7 @@ const history = useHistory()
         <Route exact path="/"><Home sesh={sesh}/></Route>
         <Route exact path="/upload" component={Upload}></Route>
         <Route exact path="/photos" component={Photos}></Route>
-        <Route exact path="/login" component={Login}></Route>
+        <Route exact path="/login"><Login setsesh={setsesh}/></Route>
         <Route exact path="/signup"><Signup setsesh={setsesh} /></Route>
       </Switch>
     </div>
