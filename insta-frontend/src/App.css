@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Genos:ital,wght@0,800;1,100");
+
 body {
   background-color: paleturquoise;
+  font-family: 'Genos', sans-serif;
+  
 }
 
 h1 {
